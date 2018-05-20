@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class MainPresenter @Inject constructor(): BasePresenter<MainView>() {
     fun onCreate(){
-        view?.showMessage("hi")
+        view?.setup()
     }
 }
