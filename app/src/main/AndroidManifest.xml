@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pl.jakubneukirch.wikiapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".app.WikiApp"
         android:allowBackup="true"

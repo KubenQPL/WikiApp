@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">WikiApp</string>
+    <string name="base_url">https://en.wikipedia.org/</string>
 
     <string name="search_item">Search</string>
     <string name="list_item">Last</string>
     <string name="saved_item">Saved</string>
+    <string name="search_menu_item">Search</string>
 </resources>

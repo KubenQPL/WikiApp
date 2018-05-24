@@ -3,6 +3,8 @@ package pl.jakubneukirch.wikiapp.base
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import javax.inject.Inject
 
@@ -29,6 +31,10 @@ abstract class BaseFragment<in P: MvpView, T: Presenter<P>>: Fragment(), MvpView
         presenter.detachView()
         presenter.onDestroy()
         super.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater?) {
+        menu.clear()
     }
 
     abstract fun injectDependencies()

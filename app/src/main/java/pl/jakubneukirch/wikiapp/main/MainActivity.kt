@@ -29,7 +29,6 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
 
     private fun setupViewPager() {
         viewPager.adapter = MainPagerAdapter(supportFragmentManager)
-
     }
 
     private fun setupListeners() {
