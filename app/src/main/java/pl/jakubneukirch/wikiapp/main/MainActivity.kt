@@ -7,7 +7,6 @@ import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.app.WikiApp
 import pl.jakubneukirch.wikiapp.base.BaseActivity
 import pl.jakubneukirch.wikiapp.di.AcitivityModule
-import pl.jakubneukirch.wikiapp.search.SearchFragment
 
 class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
 
@@ -34,7 +33,7 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
     private fun setupListeners() {
         navigationBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.searchNav -> viewPager.currentItem = SEARCH_FRAGMENT
+                R.id.infoNav -> viewPager.currentItem = INFO_FRAGMENT
                 R.id.listNav -> viewPager.currentItem = LIST_FRAGMENT
                 R.id.savedNav -> viewPager.currentItem = SAVED_FRAGMENT
             }
@@ -47,7 +46,7 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
 
             override fun onPageSelected(position: Int) {
                 when(position){
-                    SEARCH_FRAGMENT -> navigationBar.selectedItemId = R.id.searchNav
+                    INFO_FRAGMENT -> navigationBar.selectedItemId = R.id.infoNav
                     LIST_FRAGMENT -> navigationBar.selectedItemId = R.id.listNav
                     SAVED_FRAGMENT -> navigationBar.selectedItemId = R.id.savedNav
                 }

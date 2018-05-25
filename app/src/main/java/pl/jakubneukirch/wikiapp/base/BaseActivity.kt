@@ -15,7 +15,11 @@ abstract class BaseActivity<in P: MvpView, T: Presenter<P>>: AppCompatActivity()
     }
 
     override fun showMessage(text: String) {
-        Snackbar.make(window.decorView, text, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(window.decorView.findViewById(android.R.id.content), text, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showMessage(stringId: Int) {
+        showMessage(getString(stringId))
     }
 
     private fun attachViewToPresenter(){

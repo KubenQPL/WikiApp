@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="base_url">https://pl.wikipedia.org/</string>
+    <string name="info_description">WikiApp jest przykładową aplikacją pokazującą użycie bibliotek takich jak: Retrofit, RxKotlin, Dagger; jak również użycie wzorca projektowego Model-View-Presenter.Aplikacja nie jest jeszcze skończona.</string>
+    <string name="author">autor: Jakub Neukirch</string>
+    <string name="info_item">Informacje</string>
+    <string name="random_item">Losowe</string>
+    <string name="saved_item">Zapisane</string>
+    <string name="search_menu_item">Search</string>
+    <string name="error">Wystąpił błąd</string>
 </resources>

@@ -20,7 +20,11 @@ abstract class BaseFragment<in P: MvpView, T: Presenter<P>>: Fragment(), MvpView
     }
 
     override fun showMessage(text: String) {
-        Snackbar.make(activity!!.window.decorView, text, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(activity!!.window.decorView.findViewById(android.R.id.content), text, Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun showMessage(stringId: Int) {
+        showMessage(getString(stringId))
     }
 
     private fun attachViewToPresenter(){

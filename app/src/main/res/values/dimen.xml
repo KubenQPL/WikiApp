@@ -5,4 +5,7 @@
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="small_margin">4dp</dimen>
     <dimen name="searched_info_margin_start">84dp</dimen>
+    <dimen name="info_image_margin_top">50dp</dimen>
+    <dimen name="info_image_size">150dp</dimen>
+    <dimen name="info_title_margin_top">30dp</dimen>
 </resources>

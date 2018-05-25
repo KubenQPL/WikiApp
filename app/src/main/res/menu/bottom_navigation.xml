@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/searchNav"
-        android:icon="@drawable/baseline_search_white_18dp"
-        android:title="@string/search_item"/>
+        android:id="@+id/infoNav"
+        android:icon="@drawable/baseline_info_white_36"
+        android:title="@string/info_item"/>
 
     <item
         android:id="@+id/listNav"
         android:icon="@drawable/baseline_view_list_white_18dp"
-        android:title="@string/list_item"/>
+        android:title="@string/random_item"/>
 
     <item
         android:id="@+id/savedNav"

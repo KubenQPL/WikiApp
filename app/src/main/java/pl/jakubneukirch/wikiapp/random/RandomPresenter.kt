@@ -1,4 +1,4 @@
-package pl.jakubneukirch.wikiapp.search
+package pl.jakubneukirch.wikiapp.random
 
 import android.database.MatrixCursor
 import android.os.Build
@@ -8,21 +8,36 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.base.BasePresenter
 import pl.jakubneukirch.wikiapp.data.PageRepository
-import pl.jakubneukirch.wikiapp.data.model.SearchItem
+import pl.jakubneukirch.wikiapp.data.model.api.SearchItem
+import pl.jakubneukirch.wikiapp.info.COLUMN_ID
+import pl.jakubneukirch.wikiapp.info.COLUMN_SNIPPET
+import pl.jakubneukirch.wikiapp.info.COLUMN_TITLE
 import javax.inject.Inject
 
-const val COLUMN_ID = "page_id"
-const val COLUMN_TITLE = "title"
-const val COLUMN_SNIPPET = "snippet"
+class RandomPresenter @Inject constructor(private val repository: PageRepository): BasePresenter<RandomView>() {
 
-class SearchPresenter @Inject constructor(private val repository: PageRepository) : BasePresenter<SearchView>() {
-
-    private val columns = arrayOf("_id",COLUMN_ID, COLUMN_TITLE, COLUMN_SNIPPET)
+    private val columns = arrayOf("_id", COLUMN_ID, COLUMN_TITLE, COLUMN_SNIPPET)
 
     fun onCreate() {
-        view?.setup()
+        loadRandom()
+    }
+
+    private fun loadRandom() {
+         disposables += repository.getRandomPages()
+                 .subscribeOn(Schedulers.io())
+                 .observeOn(AndroidSchedulers.mainThread())
+                 .subscribeBy(
+                         onSuccess = {
+                            view?.setPagesData(it.query.pages)
+                         },
+                         onError = {
+                             Log.e("query", it.message)
+                             view?.showMessage(R.string.error)
+                         }
+                 )
     }
 
     fun searchQuerySubmitted(text: String) {

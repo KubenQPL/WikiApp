@@ -12,6 +12,11 @@
     <style name="AppTheme.TextView" parent="TextAppearance.AppCompat">
     </style>
 
+    <style name="AppTheme.TextView.Header1" parent="AppTheme.TextView">
+        <item name="android:textSize">38sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="AppTheme.TextView.Label" parent="AppTheme.TextView">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
