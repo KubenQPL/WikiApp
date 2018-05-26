@@ -5,7 +5,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import javax.inject.Inject
 
-abstract class BaseActivity<in P: MvpView, T: Presenter<P>>: AppCompatActivity(), MvpView {
+abstract class BaseActivity<in P : MvpView, T : Presenter<P>> : AppCompatActivity(), MvpView {
     @Inject protected lateinit var presenter: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ abstract class BaseActivity<in P: MvpView, T: Presenter<P>>: AppCompatActivity()
         showMessage(getString(stringId))
     }
 
-    private fun attachViewToPresenter(){
+    private fun attachViewToPresenter() {
         presenter.attachView(this as P)
     }
 

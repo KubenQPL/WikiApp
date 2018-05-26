@@ -39,13 +39,13 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
             }
             true
         }
-        viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) = Unit
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) = Unit
 
             override fun onPageSelected(position: Int) {
-                when(position){
+                when (position) {
                     INFO_FRAGMENT -> navigationBar.selectedItemId = R.id.infoNav
                     LIST_FRAGMENT -> navigationBar.selectedItemId = R.id.listNav
                     SAVED_FRAGMENT -> navigationBar.selectedItemId = R.id.savedNav

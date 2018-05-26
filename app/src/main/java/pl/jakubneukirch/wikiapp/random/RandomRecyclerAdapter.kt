@@ -1,22 +1,23 @@
 package pl.jakubneukirch.wikiapp.random
 
 import android.support.v7.widget.RecyclerView
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.random_item.view.*
 import pl.jakubneukirch.wikiapp.R
-import pl.jakubneukirch.wikiapp.data.model.api.PageObject
+import pl.jakubneukirch.wikiapp.data.model.dto.PageDTO
 
 class RandomRecyclerAdapter : RecyclerView.Adapter<RandomRecyclerAdapter.ViewHolder>() {
-    var list: List<PageObject> = arrayListOf()
+    var list: List<PageDTO> = arrayListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     class ViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        fun bind(title: String, description: String) {
+        fun bind(title: String, description: Spanned) {
             containerView.pageTitleTextView.text = title
             containerView.pageDescriptionTextView.text = description
         }
@@ -30,6 +31,6 @@ class RandomRecyclerAdapter : RecyclerView.Adapter<RandomRecyclerAdapter.ViewHol
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position].title, list[position].pageId.toString()) //todo after adding description to model swap it with pageId
+        holder.bind(list[position].title, list[position].description) //todo after adding description to model swap it with pageId
     }
 }

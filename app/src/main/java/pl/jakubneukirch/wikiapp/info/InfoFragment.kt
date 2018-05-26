@@ -3,13 +3,15 @@ package pl.jakubneukirch.wikiapp.info
 import android.app.Activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.app.WikiApp
 import pl.jakubneukirch.wikiapp.base.BaseFragment
 import pl.jakubneukirch.wikiapp.di.AcitivityModule
 
-class InfoFragment: BaseFragment<InfoView, InfoPresenter>(), InfoView {
+class InfoFragment : BaseFragment<InfoView, InfoPresenter>(), InfoView {
 
 
     companion object {

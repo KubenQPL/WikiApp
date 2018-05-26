@@ -4,12 +4,13 @@ import android.app.Activity
 import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.widget.SimpleCursorAdapter
-import android.util.Log
+import android.support.v7.widget.LinearLayoutManager
 import android.view.*
+import kotlinx.android.synthetic.main.random_fragment.*
 import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.app.WikiApp
 import pl.jakubneukirch.wikiapp.base.BaseFragment
-import pl.jakubneukirch.wikiapp.data.model.api.PageObject
+import pl.jakubneukirch.wikiapp.data.model.dto.PageDTO
 import pl.jakubneukirch.wikiapp.di.AcitivityModule
 import pl.jakubneukirch.wikiapp.info.COLUMN_SNIPPET
 import pl.jakubneukirch.wikiapp.info.COLUMN_TITLE
@@ -32,13 +33,18 @@ class RandomFragment : BaseFragment<RandomView, RandomPresenter>(), RandomView {
         presenter.onCreate()
     }
 
+    override fun setup() {
+        randomRecyclerView.adapter = adapter
+        randomRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    }
+
     override fun injectDependencies() {
         WikiApp.component
                 .getAcitivityComponent(AcitivityModule(activity as Activity))
                 .inject(this)
     }
 
-    override fun setPagesData(list: List<PageObject>) {
+    override fun setPagesData(list: List<PageDTO>) {
         adapter.list = list
     }
 
@@ -51,7 +57,7 @@ class RandomFragment : BaseFragment<RandomView, RandomPresenter>(), RandomView {
 
     private fun setupMenu(menu: Menu) {
         searchView = menu.findItem(R.id.searchMenu).actionView as android.support.v7.widget.SearchView
-        searchView.setOnQueryTextListener(object: android.support.v7.widget.SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : android.support.v7.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 presenter.searchQuerySubmitted(query)
                 return true

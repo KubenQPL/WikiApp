@@ -5,7 +5,7 @@ import pl.jakubneukirch.wikiapp.di.AppComponent
 import pl.jakubneukirch.wikiapp.di.AppModule
 import pl.jakubneukirch.wikiapp.di.DaggerAppComponent
 
-class WikiApp: Application() {
+class WikiApp : Application() {
 
     companion object {
         lateinit var component: AppComponent

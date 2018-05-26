@@ -12,9 +12,9 @@ interface WikiApi {
     @GET("w/api.php?action=query&format=json&list=search&srwhat=text")
     fun search(@Query("srsearch") searchQuery: String): Single<SearchPage>
 
-    @GET("w/api.php?action=query&format=json&list=random&rnlimit=5")
+    @GET("w/api.php?action=query&format=json&rnnamespace=0&list=random&rnlimit=5")
     fun getRandom(): Single<RandomResponse>
 
-    @GET("w/api.php?action=query&format=json&prop=revisions&rvprop=content")
+    @GET("w/api.php?action=query&format=json&prop=extracts&exlimit=5&exintro")
     fun getMultiplePages(@Query("pageids") pageids: String): Single<PagesResponse>
 }

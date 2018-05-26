@@ -8,7 +8,7 @@ import android.view.MenuInflater
 import android.view.View
 import javax.inject.Inject
 
-abstract class BaseFragment<in P: MvpView, T: Presenter<P>>: Fragment(), MvpView {
+abstract class BaseFragment<in P : MvpView, T : Presenter<P>> : Fragment(), MvpView {
 
     @Inject
     protected lateinit var presenter: T
@@ -27,7 +27,7 @@ abstract class BaseFragment<in P: MvpView, T: Presenter<P>>: Fragment(), MvpView
         showMessage(getString(stringId))
     }
 
-    private fun attachViewToPresenter(){
+    private fun attachViewToPresenter() {
         presenter.attachView(this as P)
     }
 
