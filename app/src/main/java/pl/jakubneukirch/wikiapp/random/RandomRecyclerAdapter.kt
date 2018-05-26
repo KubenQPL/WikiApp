@@ -5,6 +5,7 @@ import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.random_item.view.*
 import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.data.model.dto.PageDTO
@@ -16,10 +17,19 @@ class RandomRecyclerAdapter : RecyclerView.Adapter<RandomRecyclerAdapter.ViewHol
             notifyDataSetChanged()
         }
 
-    class ViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        fun bind(title: String, description: Spanned) {
-            containerView.pageTitleTextView.text = title
-            containerView.pageDescriptionTextView.text = description
+    class ViewHolder(private val containerView: View) : RecyclerView.ViewHolder(containerView) {
+        fun bind(title: String, description: Spanned, imageUrl: String) {
+            containerView.randomTitleTextView.text = title
+            containerView.randomDescriptionTextView.text = description
+            if(imageUrl.isNotEmpty()){
+                Picasso.get()
+                        .load(imageUrl)
+                        .into(containerView.randomImageView)
+            }else{
+                Picasso.get()
+                        .load(R.drawable.baseline_photo_black_48)
+                        .into(containerView.randomImageView)
+            }
         }
     }
 
@@ -31,6 +41,6 @@ class RandomRecyclerAdapter : RecyclerView.Adapter<RandomRecyclerAdapter.ViewHol
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position].title, list[position].description) //todo after adding description to model swap it with pageId
+        holder.bind(list[position].title, list[position].description, list[position].imageUrl)
     }
 }

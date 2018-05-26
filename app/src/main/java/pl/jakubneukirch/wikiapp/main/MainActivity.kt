@@ -28,13 +28,15 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
 
     private fun setupViewPager() {
         viewPager.adapter = MainPagerAdapter(supportFragmentManager)
+        viewPager.currentItem = RANDOM_FRAGMENT
+        navigationBar.selectedItemId = R.id.randomNav
     }
 
     private fun setupListeners() {
         navigationBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.infoNav -> viewPager.currentItem = INFO_FRAGMENT
-                R.id.listNav -> viewPager.currentItem = LIST_FRAGMENT
+                R.id.randomNav -> viewPager.currentItem = RANDOM_FRAGMENT
                 R.id.savedNav -> viewPager.currentItem = SAVED_FRAGMENT
             }
             true
@@ -47,7 +49,7 @@ class MainActivity : BaseActivity<MainView, MainPresenter>(), MainView {
             override fun onPageSelected(position: Int) {
                 when (position) {
                     INFO_FRAGMENT -> navigationBar.selectedItemId = R.id.infoNav
-                    LIST_FRAGMENT -> navigationBar.selectedItemId = R.id.listNav
+                    RANDOM_FRAGMENT -> navigationBar.selectedItemId = R.id.randomNav
                     SAVED_FRAGMENT -> navigationBar.selectedItemId = R.id.savedNav
                 }
             }

@@ -10,4 +10,6 @@
     <dimen name="info_image_margin_top">50dp</dimen>
     <dimen name="info_image_size">150dp</dimen>
     <dimen name="info_title_margin_top">30dp</dimen>
+    <dimen name="random_image_size">78dp</dimen>
+    <dimen name="random_texts_margin">90dp</dimen>
 </resources>

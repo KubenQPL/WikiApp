@@ -7,7 +7,7 @@
         android:title="@string/info_item"/>
 
     <item
-        android:id="@+id/listNav"
+        android:id="@+id/randomNav"
         android:icon="@drawable/baseline_view_list_white_18dp"
         android:title="@string/random_item"/>
 

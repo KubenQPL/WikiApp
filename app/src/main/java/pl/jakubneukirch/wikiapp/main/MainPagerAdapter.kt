@@ -7,7 +7,7 @@ import pl.jakubneukirch.wikiapp.info.InfoFragment
 import pl.jakubneukirch.wikiapp.random.RandomFragment
 
 const val INFO_FRAGMENT = 0
-const val LIST_FRAGMENT = 1
+const val RANDOM_FRAGMENT = 1
 const val SAVED_FRAGMENT = 2
 
 class MainPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {

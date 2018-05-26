@@ -1,4 +1,4 @@
-package pl.jakubneukirch.wikiapp.data.model.api
+package pl.jakubneukirch.wikiapp.data.model.api.page
 
 data class PagesResponse(
         val query: PagesQuery

@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.base.BasePresenter
 import pl.jakubneukirch.wikiapp.data.PageRepository
-import pl.jakubneukirch.wikiapp.data.model.api.SearchItem
+import pl.jakubneukirch.wikiapp.data.model.api.search.SearchItem
 import pl.jakubneukirch.wikiapp.data.model.dto.PageDTO
 import pl.jakubneukirch.wikiapp.info.COLUMN_ID
 import pl.jakubneukirch.wikiapp.info.COLUMN_SNIPPET
@@ -38,11 +38,13 @@ class RandomPresenter @Inject constructor(private val repository: PageRepository
                                 PageDTO(
                                         it.pageId,
                                         it.title,
-                                        spannedFromHtml(it.extract)
+                                        spannedFromHtml(it.extract),
+                                        it.thumbnail?.url ?: ""
                                 )
                             })
                         },
                         onError = {
+                            Log.d("Error", it.message)
                             view?.showMessage(R.string.error)
                         }
                 )

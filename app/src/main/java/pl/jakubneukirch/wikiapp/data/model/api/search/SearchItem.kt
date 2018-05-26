@@ -1,4 +1,4 @@
-package pl.jakubneukirch.wikiapp.data.model.api
+package pl.jakubneukirch.wikiapp.data.model.api.search
 
 import com.google.gson.annotations.SerializedName
 

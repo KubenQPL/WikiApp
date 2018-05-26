@@ -5,5 +5,6 @@ import android.text.Spanned
 data class PageDTO(
         val pageId: Long,
         val title: String,
-        val description: Spanned
+        val description: Spanned,
+        val imageUrl: String
 )

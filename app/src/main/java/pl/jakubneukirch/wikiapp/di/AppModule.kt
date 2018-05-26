@@ -9,8 +9,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.data.WikiApi
-import pl.jakubneukirch.wikiapp.data.model.api.PageObject
-import pl.jakubneukirch.wikiapp.data.model.api.PagesQuery
+import pl.jakubneukirch.wikiapp.data.model.api.page.PageObject
+import pl.jakubneukirch.wikiapp.data.model.api.page.PageThumbnail
+import pl.jakubneukirch.wikiapp.data.model.api.page.PagesQuery
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,13 +36,20 @@ class AppModule(private val app: Application) {
                 val jsonObject = json.asJsonObject["pages"].asJsonObject
                 val list = arrayListOf<PageObject>()
                 var pageObject: PageObject
+
+                var thumbnail: PageThumbnail?
                 jsonObject.keySet().forEach {
+                    if(jsonObject[it].asJsonObject["thumbnail"] != null){
+                        thumbnail = context.deserialize(jsonObject[it].asJsonObject["thumbnail"].asJsonObject, PageThumbnail::class.java)
+                    } else {
+                        thumbnail = null
+                    }
                     pageObject = PageObject(
                             jsonObject[it].asJsonObject["pageid"].asLong,
                             jsonObject[it].asJsonObject["title"].asString,
-                            jsonObject[it].asJsonObject["extract"].asString
+                            jsonObject[it].asJsonObject["extract"].asString,
+                            thumbnail
                     )
-
                     list.add(pageObject)
                 }
                 return PagesQuery(list)

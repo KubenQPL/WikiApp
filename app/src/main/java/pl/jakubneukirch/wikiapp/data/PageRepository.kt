@@ -2,7 +2,7 @@ package pl.jakubneukirch.wikiapp.data
 
 import io.reactivex.Single
 import pl.jakubneukirch.wikiapp.common.getMultipleParameters
-import pl.jakubneukirch.wikiapp.data.model.api.PagesResponse
+import pl.jakubneukirch.wikiapp.data.model.api.page.PagesResponse
 import javax.inject.Inject
 
 class PageRepository @Inject constructor(private val wikiApi: WikiApi) {
