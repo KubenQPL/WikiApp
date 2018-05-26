@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:padding="@dimen/small_padding"
+    android:padding="@dimen/random_item_padding"
     android:background="@drawable/border_background"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/random_item_height">
+
+    <ImageView
+        android:id="@+id/randomImageView"
+        android:src="@drawable/baseline_photo_black_48"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:layout_gravity="start|center_vertical"
+        android:layout_width="@dimen/random_image_size"
+        android:layout_height="@dimen/random_image_size" />
 
     <LinearLayout
-        android:layout_marginStart="@dimen/random_texts_margin"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -27,12 +40,6 @@
 
     </LinearLayout>
     
-    <ImageView
-        android:id="@+id/randomImageView"
-        android:adjustViewBounds="true"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:layout_gravity="start|center_vertical"
-        android:layout_width="@dimen/random_image_size"
-        android:layout_height="@dimen/random_image_size" />
 
-</FrameLayout>
+
+</LinearLayout>

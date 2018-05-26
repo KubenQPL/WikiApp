@@ -15,6 +15,6 @@ interface WikiApi {
     @GET("w/api.php?action=query&format=json&rnnamespace=0&list=random&rnlimit=5")
     fun getRandom(): Single<RandomResponse>
 
-    @GET("w/api.php?action=query&format=json&prop=extracts%7Cpageimages&exlimit=5&exintro&piprop=thumbnail")
+    @GET("w/api.php?action=query&format=json&prop=extracts%7Cpageimages&exlimit=5&exintro&piprop=thumbnail&pithumbsize=200")
     fun getMultiplePages(@Query("pageids") pageids: String): Single<PagesResponse>
 }
