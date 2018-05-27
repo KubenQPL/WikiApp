@@ -6,6 +6,6 @@
     <color name="accent">#17EBE3</color>
     <color name="accentDark">#009E98</color>
     <color name="white">#fff</color>
-    <color name="shadeDark">#44000000</color>
+    <color name="shadeDark">#77000000</color>
     <color name="blueishGrey">#33333f</color>
 </resources>
