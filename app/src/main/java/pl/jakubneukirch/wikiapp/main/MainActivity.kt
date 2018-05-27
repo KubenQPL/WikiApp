@@ -3,6 +3,7 @@ package pl.jakubneukirch.wikiapp.main
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.android.synthetic.main.standard_appbar.*
 import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.app.WikiApp
 import pl.jakubneukirch.wikiapp.base.BaseActivity

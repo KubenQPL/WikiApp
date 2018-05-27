@@ -11,6 +11,7 @@
     <dimen name="info_image_size">150dp</dimen>
     <dimen name="info_title_margin_top">30dp</dimen>
     <dimen name="random_image_size">@dimen/random_item_height</dimen>
+    <dimen name="max_page_image_height">480dp</dimen>
     <dimen name="random_texts_margin">112dp</dimen>
     <dimen name="random_item_height">140dp</dimen>
     <dimen name="random_item_padding">1px</dimen>

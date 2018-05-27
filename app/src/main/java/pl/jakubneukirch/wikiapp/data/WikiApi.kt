@@ -17,4 +17,7 @@ interface WikiApi {
 
     @GET("w/api.php?action=query&format=json&prop=extracts%7Cpageimages&exlimit=5&exintro&piprop=thumbnail&pithumbsize=200")
     fun getMultiplePages(@Query("pageids") pageids: String): Single<PagesResponse>
+
+    @GET("w/api.php?action=query&format=json&prop=extracts%7Cpageimages&exlimit=1&piprop=thumbnail&pithumbsize=1080")
+    fun getPage(@Query("pageids") pageId: Long): Single<PagesResponse>
 }

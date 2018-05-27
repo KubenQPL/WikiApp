@@ -1,6 +1,7 @@
 package pl.jakubneukirch.wikiapp.random
 
 import android.app.Activity
+import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.widget.SimpleCursorAdapter
@@ -14,6 +15,8 @@ import pl.jakubneukirch.wikiapp.data.model.dto.PageDTO
 import pl.jakubneukirch.wikiapp.di.AcitivityModule
 import pl.jakubneukirch.wikiapp.info.COLUMN_SNIPPET
 import pl.jakubneukirch.wikiapp.info.COLUMN_TITLE
+import pl.jakubneukirch.wikiapp.page.PAGE_ID
+import pl.jakubneukirch.wikiapp.page.PageActivity
 
 class RandomFragment : BaseFragment<RandomView, RandomPresenter>(), RandomView {
 
@@ -34,6 +37,13 @@ class RandomFragment : BaseFragment<RandomView, RandomPresenter>(), RandomView {
     }
 
     override fun setup() {
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        adapter.onItemClick = { _, position ->
+            presenter.randomItemClicked(position)
+        }
         randomRecyclerView.adapter = adapter
         randomRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
@@ -42,6 +52,12 @@ class RandomFragment : BaseFragment<RandomView, RandomPresenter>(), RandomView {
         WikiApp.component
                 .getAcitivityComponent(AcitivityModule(activity as Activity))
                 .inject(this)
+    }
+
+    override fun openPageScreen(pageId: Long) {
+        val intent = Intent(context, PageActivity::class.java)
+        intent.putExtra(PAGE_ID, pageId)
+        startActivity(intent)
     }
 
     override fun setPagesData(list: List<PageDTO>) {

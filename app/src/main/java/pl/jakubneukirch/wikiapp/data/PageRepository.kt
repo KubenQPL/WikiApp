@@ -14,4 +14,7 @@ class PageRepository @Inject constructor(private val wikiApi: WikiApi) {
                 val ids = it.query.random.map { it.id }
                 wikiApi.getMultiplePages(getMultipleParameters(ids))
             }
+
+    fun getPage(pageId: Long): Single<PagesResponse> = wikiApi.getPage(pageId)
+
 }

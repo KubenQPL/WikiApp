@@ -11,6 +11,8 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import pl.jakubneukirch.wikiapp.R
 import pl.jakubneukirch.wikiapp.base.BasePresenter
+import pl.jakubneukirch.wikiapp.common.spannedFromHtml
+import pl.jakubneukirch.wikiapp.common.stringFromHtml
 import pl.jakubneukirch.wikiapp.data.PageRepository
 import pl.jakubneukirch.wikiapp.data.model.api.search.SearchItem
 import pl.jakubneukirch.wikiapp.data.model.dto.PageDTO
@@ -22,6 +24,7 @@ import javax.inject.Inject
 class RandomPresenter @Inject constructor(private val repository: PageRepository) : BasePresenter<RandomView>() {
 
     private val columns = arrayOf("_id", COLUMN_ID, COLUMN_TITLE, COLUMN_SNIPPET)
+    private var pages: List<PageDTO> = arrayListOf()
 
     fun onCreate() {
         view?.setup()
@@ -34,20 +37,24 @@ class RandomPresenter @Inject constructor(private val repository: PageRepository
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onSuccess = {
-                            view?.setPagesData(it.query.pages.map {
+                            pages = it.query.pages.map {
                                 PageDTO(
                                         it.pageId,
                                         it.title,
                                         spannedFromHtml(it.extract),
                                         it.thumbnail?.url ?: ""
                                 )
-                            })
+                            }
+                            view?.setPagesData(pages)
                         },
                         onError = {
-                            Log.d("Error", it.message)
                             view?.showMessage(R.string.error)
                         }
                 )
+    }
+
+    fun randomItemClicked(position: Int) {
+        view?.openPageScreen(pages[position].pageId)
     }
 
     fun searchQuerySubmitted(text: String) {
@@ -73,21 +80,5 @@ class RandomPresenter @Inject constructor(private val repository: PageRepository
             ))
         }
         view?.showSearchResults(cursor)
-    }
-
-    private fun stringFromHtml(html: String): String {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT).toString()
-        } else {
-            return Html.fromHtml(html).toString()
-        }
-    }
-
-    private fun spannedFromHtml(html: String): Spanned {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT)
-        } else {
-            return Html.fromHtml(html)
-        }
     }
 }

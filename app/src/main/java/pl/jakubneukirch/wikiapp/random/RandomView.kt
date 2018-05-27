@@ -8,4 +8,5 @@ interface RandomView : MvpView {
     fun setup()
     fun setPagesData(list: List<PageDTO>)
     fun showSearchResults(cursor: Cursor)
+    fun openPageScreen(pageId: Long)
 }
