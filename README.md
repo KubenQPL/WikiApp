@@ -3,8 +3,10 @@ WikiApp jest przykładową aplikacją pokazującą użycie bibliotek takich jak:
 
 ## List of random pages
 <br/>
+
 ![List of random pages](https://i.imgur.com/LjwSMQ4.png)
 
 ## Article Screen
 <br/>
+
 ![Article screen](https://i.imgur.com/4rNfOcp.png)
